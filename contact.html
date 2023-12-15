@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Contact - My Portfolio</title>
+    <style>
+        /* Votre code CSS ici */
+        body {
+            background: #0c1022;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10px;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        .navbar a {
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+        }
+
+        .navbar a.active,
+        .navbar a:hover {
+            background: linear-gradient(45deg, #f06, #3cf);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+        }
+
+        .contact {
+            background-color: #0c1022;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .btn-group a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 18px;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border: 2px solid #fff;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-group a:hover {
+            background: #fff;
+            color: #0c1022;
+        }
+
+        .contact-info {
+            margin-top: 30px;
+        }
+
+        .contact-info p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        form {
+            margin-top: 30px;
+        }
+
+        form label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 8px;
+        }
+
+        form input,
+        form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #fff;
+            border-radius: 5px;
+            background-color: transparent;
+            color: #fff;
+        }
+
+        form button {
+            background: yellowgreen;
+            color: #fff;
+            font-size: 18px;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        form button:hover {
+            background: #fff;
+            color: #0c1022;
+        }
+
+        .social-icons {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .social-icons a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 24px;
+            margin: 0 15px;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var form = document.querySelector('form');
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+
+                var nom = document.getElementById('nom').value;
+                var email = document.getElementById('email').value;
+                var message = document.getElementById('message').value;
+
+                // Validation basique pour s'assurer que les champs ne sont pas vides
+                if (nom.trim() === '' || email.trim() === '' || message.trim() === '') {
+                    alert('Veuillez remplir tous les champs du formulaire.');
+                    return;
+                }
+
+                // Créer un objet FormData pour envoyer les données du formulaire
+                var formData = new FormData(form);
+
+                // Effectuer une requête AJAX
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'traiter_formulaire.php', true);
+
+                xhr.onload = function () {
+                    if (xhr.status === 200) {
+                        alert('Formulaire soumis avec succès!');
+                        // Vous pouvez ajouter d'autres actions après la soumission réussie
+                    } else {
+                        alert('Erreur lors de l\'envoi du formulaire. Veuillez réessayer.');
+                    }
+                };
+
+                // Envoyer les données du formulaire
+                xhr.send(formData);
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">Portfolio.</a>
+        <nav class="navbar">
+            <a href="index.html" class="activ">Home</a>
+            <a href="about.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+        </nav>e
+        <a href="#" class="bnt">Contact Me</a>
+    </header>
+
+    <section class="contact">
+        <div class="content">
+            <h2>Contact Me</h2>
+            <div class="btn-group">
+                <a href="#">Hire Me</a>
+            </div>
+            <div class="contact-info">
+                <p>Vous pouvez me contacter en utilisant le formulaire ci-dessous :</p>
+            </div>
+            <form>
+                <label for="nom">Nom :</label>
+                <input type="text" id="nom" name="nom" required>
+
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Message :</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
+
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Le reste du contenu de la page -->
+
+    <script>
+        // Votre code JavaScript ici si nécessaire
+    </script>
+</body>
+
+</html>
+
+
+               

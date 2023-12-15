@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>Contact - My Portfolio</title>
+    <style>
+        /* Votre code CSS ici */
+        body {
+            background: #0c1022;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 10px;
+            background: transparent;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        .navbar a {
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+        }
+
+        .navbar a.active,
+        .navbar a:hover {
+            background: linear-gradient(45deg, #f06, #3cf);
+            -webkit-text-fill-color: transparent;
+            -webkit-background-clip: text;
+        }
+
+        .skills {
+            background-color: #0c1022;
+            color: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .skills h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .skills-content {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .skill-item {
+            width: 200px;
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .skill-level {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-level span {
+            display: block;
+            height: 100%;
+            background: yellowgreen;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <a href="#" class="logo">Portfolio.</a>
+        <nav class="navbar">
+            <a href="index.html" class="active">Home</a>
+            <a href="about.html">About</a>
+            <a href="skills.html">Skills</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        <a href="#" class="bnt">Hire Me</a>
+    </header>
+
+    <section class="skills">
+        <div class="content">
+            <h2>My Skills</h2>
+
+            <div class="skills-content">
+                <!-- Le code JavaScript générera les compétences ici -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Le reste du contenu de la page -->
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var skillsData = [
+                { name: 'HTML', level: 80 },
+                { name: 'CSS', level: 70 },
+                { name: 'JavaScript', level: 60 },
+                { name: 'PHP', level: 50 },
+                { name: 'Python', level: 65 }
+            ];
+
+            var skillsContent = document.querySelector('.skills-content');
+
+            // Fonction pour créer un élément de compétence
+            function createSkillElement(skill) {
+                var skillItem = document.createElement('div');
+                skillItem.classList.add('skill-item');
+
+                var skillName = document.createElement('span');
+                skillName.classList.add('skill-name');
+                skillName.textContent = skill.name;
+
+                var skillLevel = document.createElement('div');
+                skillLevel.classList.add('skill-level');
+
+                var skillLevelSpan = document.createElement('span');
+                skillLevelSpan.style.width = skill.level + '%';
+
+                skillLevel.appendChild(skillLevelSpan);
+                skillItem.appendChild(skillName);
+                skillItem.appendChild(skillLevel);
+
+                return skillItem;
+            }
+
+            // Ajoutez chaque compétence à la page
+            skillsData.forEach(function (skill) {
+                var skillElement = createSkillElement(skill);
+                skillsContent.appendChild(skillElement);
+            });
+        });
+    </script>
+</body>
+
+</html>
